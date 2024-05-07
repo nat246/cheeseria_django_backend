@@ -1,7 +1,7 @@
 from django.db import models
+import re
 
 
-# Create your models here.
 class Cheese(models.Model):
     cheese_colors = (
         ('BLUE', 'BLUE'),
@@ -31,3 +31,12 @@ class Cheese(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.id = self.generate_id()
+        super().save(*args, **kwargs)
+
+    def generate_id(self):
+        kebab_name = re.sub(r'\s+', '-', self.name.strip().lower())
+        return kebab_name
