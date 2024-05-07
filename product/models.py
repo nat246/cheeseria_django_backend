@@ -22,7 +22,7 @@ class Cheese(models.Model):
         ('YELLOW', 'YELLOW'),
     )
 
-    id = models.CharField(primary_key=True, max_length=30, null=False)
+    id = models.CharField(primary_key=True, unique=True, max_length=30, null=False)
     name = models.CharField(max_length=30, null=False)
     description = models.TextField(null=False)
     image = models.URLField(null=False)
