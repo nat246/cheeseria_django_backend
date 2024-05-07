@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'product',
-    # 'order',
+    'order',
     'user_api.apps.UserApiConfig',
 ]
 
@@ -83,6 +83,18 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+# User model
+AUTH_USER_MODEL = 'user_api.AppUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
 
 # Password validation

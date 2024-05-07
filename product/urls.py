@@ -3,8 +3,6 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-# router.register('data', ProductView, basename='data')
-# router.register('create', CreateCheeseView, basename='create')
 
 urlpatterns = [
     path('', create_cheese, name='create-cheese'),
